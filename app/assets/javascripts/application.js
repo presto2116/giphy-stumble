@@ -16,8 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
-
-$('document').ready(function(){
+var ready = function ready () {
+	$(document).foundation();
 	var gifView = new GifView();
-});
-$(function(){ $(document).foundation(); });
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

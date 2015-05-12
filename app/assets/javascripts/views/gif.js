@@ -1,6 +1,6 @@
 function GifView() {
 	$('#giphy-stumble').on('click', this.gifStumble.bind(this));
-	$('#gif').on('click', this.gifStumble.bind(this));
+	// $('#gif').on('click', this.gifStumble.bind(this));
 	$('#add-favorite').on('click', this.addToFavoirtes.bind(this));
 }
 

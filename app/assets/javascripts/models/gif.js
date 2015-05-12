@@ -14,6 +14,7 @@ Gif.prototype = {
 			method: "get",
 			dataType: "json"
 		}).done(function(response){
+			console.log("clicked");
 			this.gif_url = response.data[randomNum()].images.original.url;
 			//BIG NO NO! global variable!
 			current_interest = response.current_interest;
