@@ -17,12 +17,18 @@ ActiveRecord::Schema.define(version: 20150510231707) do
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.text    "gif_url"
   end
 
   create_table "gifs", force: :cascade do |t|
+    t.integer "interest_id"
+    t.text    "gif_url"
   end
 
   create_table "interests", force: :cascade do |t|
+    t.integer "user_id"
+    t.text    "interests"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,6 +7,16 @@ gem 'rails', '4.2.1'
 gem 'rails_12factor', group: :production
 
 gem 'devise'
+
+gem 'figaro'
+
+gem 'httparty'
+
+gem 'gon'
+
+gem 'rename'
+
+gem 'foundation-rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
