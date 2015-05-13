@@ -30,15 +30,11 @@
     <ul class="right">
       
       <li><a class="button" id="giphy-stumble">Stumble</a></li>
-      <% if current_user %>
-        <li><a class="button radius" id="add-favorite"><i class="fi-heart"></i></a></li>
-      <% else %>
+      
         <li><a class="button radius" id="signup-button"><i class="fi-heart"></i></a></form></li>
 
-      <% end %>
-      <% if current_user %>
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-      <% else %>
+     
+      
       <li class="has-dropdown">
         <a href="#">Log in/Sign up</a>
         <ul class="dropdown">
@@ -46,16 +42,14 @@
          <li><a href="" data-reveal-id="sign-up-modal">Signup</a></li>
         </ul>
       </li>
-      <% end %>
+  
     </ul>
 
     <!-- Left Nav Section -->
     <ul class="left">
-      <% if current_user %>
-        <li><a href="/favorites">Favorites</a></li>
-      <% else %>
+     
         <li><a href="" data-reveal-id="sign-up-modal">Favorites</a></li>
-      <% end %>
+  
       <li><a href="/interests"><span id="interest">Category</span></a></li>
     </ul>
   </section>
