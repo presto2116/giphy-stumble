@@ -4,9 +4,10 @@ function Gif(gif_url) {
 }
 
 	var randomNum = function(){
-		return parseInt(Math.floor(Math.random() * 100));
-		
+		num = parseInt(Math.floor(Math.random() * 100));
+		return num;
 	}
+	console.log(randomNum());
 Gif.prototype = {
 	fetchGif: function(){
 		return $.ajax({
@@ -14,14 +15,26 @@ Gif.prototype = {
 			method: "get",
 			dataType: "json"
 		}).done(function(response){
-			console.log("clicked");
 			this.gif_url = response.data[randomNum()].images.original.url;
 			//BIG NO NO! global variable!
 			current_interest = response.current_interest;
-			//BIG NO NO! global variable!
-		}.bind(this));
+			//BIG NO NO! global variable
+		}.bind(this)).fail(function(response){
+			console.log("ajax failed to load");
+		});
 	},
-	addFavorite: function(){
-		return this.gif_url;
+	interestGif: function(){
+		return $.ajax({
+			url: "/interests",
+			method: "get",
+			dataType: "json"
+		}).done(function(response){
+			this.gif_url = response.data[randomNum()].images.original.url;
+			//BIG NO NO! global variable!
+			current_interest = response.current_interest;
+			//BIG NO NO! global variable
+		}.bind(this));
 	}
 }
+
+

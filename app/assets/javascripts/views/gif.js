@@ -1,25 +1,49 @@
 function GifView() {
 	$('#giphy-stumble').on('click', this.gifStumble.bind(this));
-	// $('#gif').on('click', this.gifStumble.bind(this));
-	$('#add-favorite').on('click', this.addToFavoirtes.bind(this));
+	$('#interest-stumble').on('click', this.interestStumble.bind(this));
+	$('#add-favorite').on('click', this.addToFavorites.bind(this));
+	$('#clippy').on('click', this.copyToClipboard);
 }
 
 GifView.prototype = {
 	gifStumble: function() {
+
 		this.model = new Gif();
+		console.log("clicked");
+		$('#add-favorite').css("background", "#007095");
 		this.model.fetchGif().done(function(){
 			this.render();
 		}.bind(this));
 	},
-	addToFavoirtes: function(){
-		console.log(this.model.gif_url);
-		this.render2();
+	interestStumble: function(){
+		this.model = new Gif();
+		$('#add-favorite').css("background", "#007095");
+		this.model.interestGif().done(function(){
+			this.render();
+		}.bind(this));
 	},
+	addToFavorites: function(){
+		$('#add-favorite').css("background", "green");
+			$.ajax({
+				url: "/favorites",
+				method: "post",
+				data: {
+					my_data: this.model.gif_url
+				}
+			})
+	
+	},
+
 	render: function(){
 		$("#gif").css("background-image", 'url(' + this.model.gif_url + ')');
 		$("#interest").text("Category: " + current_interest);
 	},
-	render2: function(){
-		$("#interest").text(this.model.gif_url);
-	}
+	copyToClipboard: function(text) {
+  window.prompt("Copy to clipboard: Cmd+C, Enter", text);
 }
+}
+
+
+
+
+
