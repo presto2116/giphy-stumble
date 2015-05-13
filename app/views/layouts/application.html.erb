@@ -16,7 +16,7 @@
 
   <body>
 
-
+<div class="sticky">
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
@@ -77,8 +77,9 @@
      <a class="close-reveal-modal">&#215;</a>
   </div>
 </div>
+</div>
 
-<main class="content row">
+
 
   <!-- Devise code  -->
 <% if notice %>
@@ -87,6 +88,7 @@
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
+
 
     <%= yield %>
 
