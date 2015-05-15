@@ -50,6 +50,18 @@
               Favorites (
               <%=current_user.favorites.count %> )</a>
           </li>
+          <li class="has-dropdown">
+            <a><span id="interest">Category</span>
+            </a>
+            <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
+              <li><a href="/" data-reveal-id="new-category-modal">New Category</a></li>
+              <% @interests.order("interest ASC").each do |p| %>
+              <li>
+              
+                <%=link_to p.interest.capitalize, interest_path(p.id), class:"a" %></li> 
+              <% end %>
+              </ul>
+          </li>
           
           <% else %>
           <% end %>

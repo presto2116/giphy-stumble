@@ -33,14 +33,14 @@ body,html{
 }
 
 
-#gif {
+#gif, #gif1 {
  	background-color: black;
  	position: absolute;
  	width: 100%;
  	height: 93%;
  }
 
-#gif{
+#gif, #gif1{
 	 background-repeat:no-repeat;
    background-size: cover;
    background-position:center center;
@@ -152,4 +152,28 @@ button:focus {outline:0 !important;}
     margin-right: auto;
   }
 }
+#sign-up-modal {
+  background: rgba(51,51,51,.7); 
+}
+#sign-up-modal label, h2{
+  background: rgba(0,0,0,0);
+  color: white;
+  display: inline-block;
+}
+
+#sign-in-modal {
+  background: rgba(51,51,51,.7); 
+ 
+}
+#sign-in-modal label, h2{
+  background: rgba(0,0,0,0);
+  color: white;
+  display: inline-block;
+}
+
+#new-category-modal {
+  background: rgba(51,51,51,.7); 
+}
+
+
 

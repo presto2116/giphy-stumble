@@ -20,10 +20,17 @@
             <a class="button radius" id="giphy-stumble">Stumble</a>
           </li>
           <li id="space"></li>
+          <% if current_user %>
           <li>
             <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
             </a>
           </li>
+          <% else %>
+            <li>
+              <a class="button radius" href="#" data-reveal-id="sign-up-modal" id="add-favorite"> <i class="fi-heart"></i>
+            </a>
+            </li>
+          <% end %>
 
           <% if current_user %>
           <li class="has-dropdown">
@@ -61,21 +68,23 @@
               )
             </a>
           </li>
-          <% else %>
-          <% end %>
+        
 
           <li class="has-dropdown">
             <a><span id="interest"></span>
             </a>
             <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
               <li><a href="/" data-reveal-id="new-category-modal">New Category</a></li>
-              <% @interests.each do |p| %>
+              <% @interests.order("interest ASC").each do |p| %>
               <li>
               
                 <%=link_to p.interest.capitalize, interest_path(p.id), class:"a" %></li> 
               <% end %>
               </ul>
           </li>
+            <% else %>
+            <li><a><span id="interest"></span></li>
+          <% end %>
         </ul>
       </section>
     </nav>

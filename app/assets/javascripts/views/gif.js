@@ -2,7 +2,8 @@ function GifView() {
 	$('#giphy-stumble').on('click', this.gifStumble.bind(this));
 	$('#interest-stumble').on('click', this.interestStumble.bind(this));
 	$('#add-favorite').on('click', this.addToFavorites.bind(this));
-
+	$('#gif').on('click', this.gifStumble.bind(this));
+	$('#gif1').on('click', this.interestStumble.bind(this));
 }
 
 GifView.prototype = {
@@ -37,8 +38,10 @@ GifView.prototype = {
 	},
 
 	render: function(){
+		$("#gif1").css("background-image", 'url(' + this.model.gif_url + ')');
 		$("#gif").css("background-image", 'url(' + this.model.gif_url + ')');
 		$("#interest").text("Category: " + current_interest);
+		
 	},
 	copyToClipboard: function(text) {
   window.prompt("Copy to clipboard: Cmd+C, Enter", text);
