@@ -1,12 +1,14 @@
 class GifsController < ApplicationController
 	
 	def random_interest
-			interest = ["best", "southpark", "happy", "puppy", "dog", "simpsons", "space", "football", "apple", "geek", "monkey", "animal", "pizza", "cheese", "funny", "lol", "hilarious", "beer", "whiskey", "wasted", "alligator", "cute", "adorable", "sleepy", "loop", "viral", "tiger", "reaction", "favorites", "top100", "cat", "food", "sports", "tv", "movie", "batman", "wine", "banana", "dinosaur", "fword", "github", "ruby", "programming", "coding", "hacking", "rubyonrails", "fml", "omg", "milkshake", "hotdog", "goldenretriever", "beach", "snow", "rain", "mountain", "snowboard", "skateboard", "crazy", "Trex", "car", "bike", "motorcycle", "giraffe", "fail", "subaru", "colorado", "dc", "shanghai", "macbook", "cheeseburger", "sandwich", "pasta", "noodles", "chinese", "spain", "spanish", "internet", "webdevelopment", "science", "astronomy", "telescope", "art", "3d", "tornado", "lizard", "scary", "drunk", "drinking", "partying", "phish", "music", "band", "starwars", "startrek", "rofl", "orangejuice", "80s", "90s", "2000", "y2k"]
+			interest = ["best", "southpark", "happy", "puppy", "dog", "simpsons", "space", "football", "apple", "geek", "monkey", "animal", "pizza", "cheese", "funny", "lol", "hilarious", "beer", "whiskey", "wasted", "alligator", "cute", "adorable", "sleeping", "loop", "viral", "tiger", "reaction", "favorites", "cat", "food", "sports", "tv", "movie", "batman", "wine", "banana", "dinosaur", "github", "coding", "hacking", "milkshake", "hotdog", "golden-retriever", "beach", "snow", "rain", "mountain", "snowboard", "skateboard", "crazy", "car", "bike", "motorcycle", "giraffe", "fail", "colorado", "washington-dc", "shanghai", "cheeseburger", "sandwich", "pasta", "noodles", "china",  "internet",  "science", "astronomy", "art", "tornado", "lizard", "scary", "drunk", "drinking", "music", "band", "star-wars", "star-trek", "80s", "90s", "tired", "bored", "hungry", "stressed"]
 			@random_interest = interest.sample
 			return @random_interest
 	end
 
 	def index
+		@interests = Interest.all
+		@interest = Interest.new
 		secret_key = ENV['secret_key']
 		interest_query = random_interest
 		

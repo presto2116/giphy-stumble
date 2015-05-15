@@ -3,11 +3,11 @@ function Gif(gif_url) {
 	this.gif_url = gif_url;
 }
 
-	var randomNum = function(){
-		num = parseInt(Math.floor(Math.random() * 100));
+	var randomNum = function(length){
+		num = parseInt(Math.floor(Math.random() * (length)));
 		return num;
 	}
-	console.log(randomNum());
+
 Gif.prototype = {
 	fetchGif: function(){
 		return $.ajax({
@@ -15,8 +15,10 @@ Gif.prototype = {
 			method: "get",
 			dataType: "json"
 		}).done(function(response){
-			this.gif_url = response.data[randomNum()].images.original.url;
+			var length = response.data.length;
+			this.gif_url = response.data[randomNum(length)].images.original.url;
 			//BIG NO NO! global variable!
+				console.log(randomNum(length));
 			current_interest = response.current_interest;
 			//BIG NO NO! global variable
 		}.bind(this)).fail(function(response){
@@ -25,11 +27,13 @@ Gif.prototype = {
 	},
 	interestGif: function(){
 		return $.ajax({
-			url: "/interests",
+			url: window.location.pathname,
 			method: "get",
 			dataType: "json"
 		}).done(function(response){
-			this.gif_url = response.data[randomNum()].images.original.url;
+			var length = response.data.length;
+			console.log("click");
+			this.gif_url = response.data[randomNum(length)].images.original.url;
 			//BIG NO NO! global variable!
 			current_interest = response.current_interest;
 			//BIG NO NO! global variable

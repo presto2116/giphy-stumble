@@ -2,15 +2,15 @@ function GifView() {
 	$('#giphy-stumble').on('click', this.gifStumble.bind(this));
 	$('#interest-stumble').on('click', this.interestStumble.bind(this));
 	$('#add-favorite').on('click', this.addToFavorites.bind(this));
-	$('#clippy').on('click', this.copyToClipboard);
+
 }
 
 GifView.prototype = {
 	gifStumble: function() {
-
 		this.model = new Gif();
 		console.log("clicked");
 		$('#add-favorite').css("background", "#007095");
+
 		this.model.fetchGif().done(function(){
 			this.render();
 		}.bind(this));
@@ -24,6 +24,8 @@ GifView.prototype = {
 	},
 	addToFavorites: function(){
 		$('#add-favorite').css("background", "green");
+		var count = parseInt($('#favorite-count').text()) + 1;
+		$("#favorite-count").text(count);
 			$.ajax({
 				url: "/favorites",
 				method: "post",

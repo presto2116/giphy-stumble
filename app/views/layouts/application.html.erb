@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Giphy Stumble" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Giphy Stumble" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' =>
+  true %>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
-    <%= csrf_meta_tags %>
-  </head>
+  <%= csrf_meta_tags %></head>
 
-  <body>
+<body>
 
-<div class="sticky">
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="/">Giphy Stumble</a></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+  <div class="sticky">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <a href="/">Giphy Stumble</a>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <a href="#">
+            <span>Menu</span>
+          </a>
+        </li>
+      </ul>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      
-      <li><a class="button" id="giphy-stumble">Stumble</a></li>
-      <% if current_user %>
-        <li><a class="button radius" id="add-favorite"><i class="fi-heart"></i></a></li>
-      <% else %>
-        <li><a class="button radius" id="signup-button"><i class="fi-heart"></i></a></form></li>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if current_page?(root_path) %>
+          <li>
+            <a class="button radius" id="giphy-stumble">Stumble</a>
+          </li>
+          <li id="space"></li>
+          <li>
+            <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
+            </a>
+          </li>
+          <% end %>
+          <% if !current_page?(favorites_path) && !current_page?(root_path) %>
+          <li>
+            <a class="button radius" id="interest-stumble">Stumble</a>
+          </li>
+          <li id="space"></li>
+          <li>
+            <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
+            </a>
+          </li>
+         
+          <% end %>
 
-      <% end %>
-      <% if current_user %>
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-      <% else %>
-      <li class="has-dropdown">
-        <a href="#">Log in/Sign up</a>
-        <ul class="dropdown">
-         <li><a href="" data-reveal-id="sign-in-modal">Login</a></li>
-         <li><a href="" data-reveal-id="sign-up-modal">Signup</a></li>
+          <% if current_user %>
+          <li class="has-dropdown">
+            <a href="#">
+              <i class="fi-widget"></i>
+            </a>
+            <ul class="dropdown">
+              <li>
+                <%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
+            </ul>
+          </li>
+          <% else %>
+          <li class="has-dropdown">
+            <a href="#">Account</a>
+            <ul class="dropdown">
+              <li>
+                <a href="#" data-reveal-id="sign-in-modal">Sign In</a>
+              </li>
+              <li>
+                <a href="#" data-reveal-id="sign-up-modal">New User</a>
+              </li>
+            </ul>
+          </li>
+          <% end %>
         </ul>
-      </li>
-      <% end %>
-    </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <% if current_user %>
-        <li><a href="/favorites">Favorites</a></li>
-      <% else %>
-        <li><a href="" data-reveal-id="sign-up-modal">Favorites</a></li>
-      <% end %>
-      <li><a href="/interests"><span id="interest">Category</span></a></li>
-    </ul>
-  </section>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <% if current_user %>
+          <% if current_page?(favorites_path)%>
+          <li class="active">
+            <a href="/favorites">
+              Favorites (
+              <%=current_user.favorites.count %>)</a>
+          </li>
+          <% else %>
+          <li>
+            <a href="/favorites">
+              Favorites (
+              <span id="favorite-count">
+                <%=current_user.favorites.count %></span>
+              )
+            </a>
+          </li>
+          <%end%>
+          <% else %>
+          <% end %>
+          <% if !current_page?(favorites_path) && !current_page?(interests_path) %>
+          <li class="has-dropdown">
+            <a><span id="interest">Category</span>
+            </a>
+            <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
+              <li><a href="/" data-reveal-id="new-category-modal">New Category</a></li>
+              <% @interests.order("interest ASC").each do |p| %>
+              <li>
+              
+                <%=link_to p.interest.capitalize, interest_path(p.id), class:"a" %></li> 
+                <% end %>
+              <% end %></ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
 
-</nav>
+    <!-- modal content -->
 
-<!-- modal content -->
+    <div id="sign-in-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "login_forms/sign_in" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
 
-<div id="sign-in-modal" class="reveal-modal" data-reveal>
-  <div class="row">
-    <%= render "login_forms/sign_in" %>
-    <a class="close-reveal-modal">&#215;</a>
+    <div id="sign-up-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "login_forms/sign_up" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+    <div id="new-category-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "interests/new" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
   </div>
-</div>
 
-<div id="sign-up-modal" class="reveal-modal" data-reveal>
-  <div class="row">
-    <%= render "login_forms/sign_up" %>
-     <a class="close-reveal-modal">&#215;</a>
-  </div>
-</div>
-</div>
-
-
-
-  <!-- Devise code  -->
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-
-
-    <%= yield %>
-
+  <%= yield %>
   </body>
 </html>
-

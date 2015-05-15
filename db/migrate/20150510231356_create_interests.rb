@@ -2,7 +2,8 @@ class CreateInterests < ActiveRecord::Migration
   def change
     create_table :interests do |t|
     	t.belongs_to :user
-    	t.text :interests
+    	t.text :interest
+ 
     end
   end
 end

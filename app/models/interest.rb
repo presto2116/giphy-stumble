@@ -1,6 +1,6 @@
 class Interest < ActiveRecord::Base
 	belongs_to :user
-	has_many :gifs
-
+	validates :interest, :presence => true
+	
 
 end

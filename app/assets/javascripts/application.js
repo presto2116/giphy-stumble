@@ -19,6 +19,7 @@
 var ready = function ready () {
 	$(document).foundation();
 	var gifView = new GifView();
+	gifView.interestStumble();
 }
 
 $(document).ready(ready);
