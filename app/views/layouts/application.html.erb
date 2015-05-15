@@ -16,131 +16,15 @@
 
 <body>
 
-  <div class="sticky">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1>
-            <a href="/">Giphy Stumble</a>
-          </h1>
-        </li>
-        <li class="toggle-topbar menu-icon">
-          <a href="#">
-            <span>Menu</span>
-          </a>
-        </li>
-      </ul>
 
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <% if current_page?(root_path) %>
-          <li>
-            <a class="button radius" id="giphy-stumble">Stumble</a>
-          </li>
-          <li id="space"></li>
-          <li>
-            <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
-            </a>
-          </li>
-          <% end %>
-          <% if !current_page?(favorites_path) && !current_page?(root_path) %>
-          <li>
-            <a class="button radius" id="interest-stumble">Stumble</a>
-          </li>
-          <li id="space"></li>
-          <li>
-            <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
-            </a>
-          </li>
-         
-          <% end %>
+<% if current_page?(favorites_path) %>
+  <%= render "layouts/favoritesnav" %>
 
-          <% if current_user %>
-          <li class="has-dropdown">
-            <a href="#">
-              <i class="fi-widget"></i>
-            </a>
-            <ul class="dropdown">
-              <li>
-                <%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
-            </ul>
-          </li>
-          <% else %>
-          <li class="has-dropdown">
-            <a href="#">Account</a>
-            <ul class="dropdown">
-              <li>
-                <a href="#" data-reveal-id="sign-in-modal">Sign In</a>
-              </li>
-              <li>
-                <a href="#" data-reveal-id="sign-up-modal">New User</a>
-              </li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <% if current_user %>
-          <% if current_page?(favorites_path)%>
-          <li class="active">
-            <a href="/favorites">
-              Favorites (
-              <%=current_user.favorites.count %>)</a>
-          </li>
-          <% else %>
-          <li>
-            <a href="/favorites">
-              Favorites (
-              <span id="favorite-count">
-                <%=current_user.favorites.count %></span>
-              )
-            </a>
-          </li>
-          <%end%>
-          <% else %>
-          <% end %>
-          <% if !current_page?(favorites_path) && !current_page?(interests_path) %>
-          <li class="has-dropdown">
-            <a><span id="interest">Category</span>
-            </a>
-            <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
-              <li><a href="/" data-reveal-id="new-category-modal">New Category</a></li>
-              <% @interests.order("interest ASC").each do |p| %>
-              <li>
-              
-                <%=link_to p.interest.capitalize, interest_path(p.id), class:"a" %></li> 
-                <% end %>
-              <% end %></ul>
-          </li>
-        </ul>
-      </section>
-    </nav>
-
-    <!-- modal content -->
-
-    <div id="sign-in-modal" class="reveal-modal" data-reveal>
-      <div class="row">
-        <%= render "login_forms/sign_in" %>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-    </div>
-
-    <div id="sign-up-modal" class="reveal-modal" data-reveal>
-      <div class="row">
-        <%= render "login_forms/sign_up" %>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-    </div>
-    <div id="new-category-modal" class="reveal-modal" data-reveal>
-      <div class="row">
-        <%= render "interests/new" %>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-    </div>
-  </div>
+  <% elsif current_page?(root_path) %>
+  <%= render "layouts/gifnav" %>
+  <% else %>
+    <%= render "layouts/interestnav" %>
+<% end %>
 
   <%= yield %>
   </body>

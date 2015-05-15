@@ -1,0 +1,83 @@
+<div class="sticky">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <a href="/">Giphy Stumble</a>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <a href="#">
+            <span>Menu</span>
+          </a>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if current_user %>
+          <li class="has-dropdown">
+            <a href="#">
+              <i class="fi-widget"></i>
+            </a>
+            <ul class="dropdown">
+              <li>
+                <%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
+            </ul>
+          </li>
+          <% else %>
+          <li class="has-dropdown">
+            <a href="#">Account</a>
+            <ul class="dropdown">
+              <li>
+                <a href="#" data-reveal-id="sign-in-modal">Sign In</a>
+              </li>
+              <li>
+                <a href="#" data-reveal-id="sign-up-modal">New User</a>
+              </li>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <% if current_user %>
+         
+          <li class="active">
+            <a href="/favorites">
+              Favorites (
+              <%=current_user.favorites.count %> )</a>
+          </li>
+          
+          <% else %>
+          <% end %>
+          </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    <!-- modal content -->
+
+    <div id="sign-in-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "login_forms/sign_in" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+
+    <div id="sign-up-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "login_forms/sign_up" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+    <div id="new-category-modal" class="reveal-modal" data-reveal>
+      <div class="row">
+        <%= render "interests/new" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+  </div>

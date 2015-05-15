@@ -1,6 +1,6 @@
 class InterestsController < ApplicationController
 	# TRYING TO GET IT TO LOCK IN CATEGORY SEARCH WORD
-	
+	before_action :authenticate_user!
 	def interest
 		return "happy"
 	end
