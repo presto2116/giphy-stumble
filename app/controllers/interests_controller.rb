@@ -43,7 +43,7 @@ class InterestsController < ApplicationController
 	def destroy
 		@interest = current_user.interests.find( params[:id])
 		@interest.destroy
-		redirect_to root_path
+		redirect_to :back
 	end
 
 	private
