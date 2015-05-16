@@ -38,22 +38,24 @@
       color: #007095 !important;
     }
 
-.footer {
-  background: #333333;
-  position: fixed;
-  bottom: 0;
-  width: 400px;
-  height: 18px;
+ /*Footer Styling*/
 
-}
-.footer a {
-  color: #007095 !important;
-  font-size: 12px;
-}
-.footer p{
-  color: #595959 !important;
-  font-size: 12px;
-}
+    .footer {
+      background: #333333;
+      position: fixed;
+      bottom: 0;
+      width: 400px;
+      height: 18px;
+
+    }
+    .footer a {
+      color: #595959 !important;
+      font-size: 12px;
+    }
+    .footer p{
+      color: #007095 !important;
+      font-size: 12px;
+    }
 /*GIF styling*/
 
     #gif-root, #gif-interest {
