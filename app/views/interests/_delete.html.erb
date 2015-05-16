@@ -1,0 +1,7 @@
+<% @interests.order("interest asc").each do |interest| %>
+
+			<p><%= link_to "Remove", interest_path(interest), method: :delete, class:"button tiny" %>
+				<%= interest.interest.capitalize %></p>
+
+	<% end %>
+

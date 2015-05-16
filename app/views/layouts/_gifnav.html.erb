@@ -1,9 +1,11 @@
+<!-- Top Bar Render for Root page -->
+<!-- Top Bar Title -->
 <div class="sticky">
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
           <h1>
-            <a href="/">Giphy Stumble</a>
+            <a class="blue-logo" href="/">Giphy Stumble</a>
           </h1>
         </li>
         <li class="toggle-topbar menu-icon">
@@ -14,34 +16,32 @@
       </ul>
 
       <section class="top-bar-section">
-        <!-- Right Nav Section -->
+<!-- Right Nav Section -->
         <ul class="right">
           <li>
             <a class="button radius" id="giphy-stumble">Stumble</a>
           </li>
           <li id="space"></li>
           <% if current_user %>
-          <li>
-            <a class="button radius" id="add-favorite"> <i class="fi-heart"></i>
-            </a>
-          </li>
+            <li>
+              <a class="button radius" id="add-favorite"> <i class="fi-heart"></i></a>
+            </li>
           <% else %>
             <li>
-              <a class="button radius" href="#" data-reveal-id="sign-up-modal" id="add-favorite"> <i class="fi-heart"></i>
-            </a>
+              <a class="button radius" href="#" data-reveal-id="sign-up-modal" id="add-favorite"> <i class="fi-heart"></i></a>
             </li>
           <% end %>
 
           <% if current_user %>
-          <li class="has-dropdown">
-            <a href="#">
-              <i class="fi-widget"></i>
-            </a>
-            <ul class="dropdown">
-              <li>
-                <%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
-            </ul>
-          </li>
+            <li class="has-dropdown">
+              <a href="#">
+                <i class="fi-widget"></i>
+              </a>
+              <ul class="dropdown">
+                <li><span id="white"><%= current_user.email %></span></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
+              </ul>
+            </li>
           <% else %>
           <li class="has-dropdown">
             <a href="#">Account</a>
@@ -60,54 +60,60 @@
         <!-- Left Nav Section -->
         <ul class="left">
           <% if current_user %>
-          <li>
-            <a href="/favorites">
-              Favorites (
-              <span id="favorite-count">
-                <%=current_user.favorites.count %></span>
-              )
-            </a>
-          </li>
-        
-
-          <li class="has-dropdown">
-            <a><span id="interest"></span>
-            </a>
-            <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
-              <li><a href="/" data-reveal-id="new-category-modal">New Category</a></li>
-              <% @interests.order("interest ASC").each do |p| %>
-              <li>
-              
-                <%=link_to p.interest.capitalize, interest_path(p.id), class:"a" %></li> 
-              <% end %>
-              </ul>
-          </li>
-            <% else %>
+            <li>
+              <a href="/favorites">
+                Favorites (
+                <span id="favorite-count">
+                  <%=current_user.favorites.count %></span>
+                )
+              </a>
+            </li>
+              <li class="has-dropdown">
+                <a><span id="interest"></span></a>
+                  <ul class="dropdown" style="overflow-y:scroll;height:400px !important">
+                    <li class="active"><a href="#" data-reveal-id="new-category-modal">New Category</a></li>
+                    <% @interests.order("interest ASC").each do |p| %>
+                    <li><%=link_to p.interest.capitalize, interest_path(p.id) %></li>
+                    <li class="divider"></li>
+        <% end %>
+                  <li class="active"><a href="#" data-reveal-id="remove-category-modal">Manage Categories</a></li>
+                </ul>
+            </li>
+          <% else %>
             <li><a><span id="interest"></span></li>
-          <% end %>
+      <% end %>
         </ul>
       </section>
     </nav>
 
     <!-- modal content -->
 
-    <div id="sign-in-modal" class="reveal-modal" data-reveal>
+    <div id="sign-in-modal" class="reveal-modal small" data-reveal>
       <div class="row">
         <%= render "login_forms/sign_in" %>
         <a class="close-reveal-modal">&#215;</a>
       </div>
     </div>
 
-    <div id="sign-up-modal" class="reveal-modal" data-reveal>
+    <div id="sign-up-modal" class="reveal-modal small" data-reveal>
       <div class="row">
         <%= render "login_forms/sign_up" %>
         <a class="close-reveal-modal">&#215;</a>
       </div>
     </div>
-    <div id="new-category-modal" class="reveal-modal" data-reveal>
+
+    <div id="new-category-modal" class="reveal-modal tiny left" data-reveal>
       <div class="row">
         <%= render "interests/new" %>
         <a class="close-reveal-modal">&#215;</a>
       </div>
     </div>
+
+    <div id="remove-category-modal" class="reveal-modal tiny" data-reveal>
+      <div class="row">
+        <%= render "interests/delete" %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+
   </div>

@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-var ready = function ready () {
+var ready = function() {
 	$(document).foundation();
 	var gifView = new GifView();
 	gifView.interestStumble();

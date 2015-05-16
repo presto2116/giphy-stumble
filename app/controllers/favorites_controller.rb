@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 
 	def index
 		@favorites = current_user.favorites.all
-	@interests = current_user.interests.all
+		@interests = current_user.interests.all
 		@interest = current_user.interests.new
 	end
 

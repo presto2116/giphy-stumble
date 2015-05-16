@@ -39,9 +39,11 @@ class InterestsController < ApplicationController
 			format.json { render json: @response}
 		end
 	end
-	def update
-		@interests = current_user.interests.all
+
+	def destroy
 		@interest = current_user.interests.find( params[:id])
+		@interest.destroy
+		redirect_to root_path
 	end
 
 	private
