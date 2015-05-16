@@ -42,10 +42,7 @@ GifView.prototype = {
 		$("#gif-root").css("background-image", 'url(' + this.model.gif_url + ')');
 		$("#interest").text("Category: " + current_interest);
 		
-	},
-	copyToClipboard: function(text) {
-  window.prompt("Copy to clipboard: Cmd+C, Enter", text);
-}
+	}
 }
 
 
