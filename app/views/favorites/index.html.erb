@@ -3,7 +3,7 @@
 	<% @favorites.reverse_each do |favorite| %>
 		<div class="show-image">
 			<%= link_to_image(favorite.gif_url, favorite_path(favorite)) %>
-			<span id="hello"><%= link_to "x", favorite_path(favorite), method: :delete, class:"button tiny" %></span>
+			<span id="show-hide"><%= link_to "x", favorite_path(favorite), method: :delete, class:"button tiny" %></span>
 		</div>
 	<% end %>
 </div>

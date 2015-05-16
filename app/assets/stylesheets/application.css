@@ -120,11 +120,11 @@
         opacity:0.5;
     }
 
-    .show-image #hello{
+    .show-image #show-hide{
       position: absolute;
       display: none;
     }
-    .show-image:hover #hello{
+    .show-image:hover #show-hide{
       display: block;
       top: 5px;
       right:5px;
