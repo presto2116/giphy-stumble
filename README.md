@@ -2,7 +2,7 @@
 
 ##A new way to view GIFs
 
-##View at: giphy-stumble.herokuapp.com
+##View at: [a link](https://giphy-stumble.herokuapp.com)
 
 
 User stories
