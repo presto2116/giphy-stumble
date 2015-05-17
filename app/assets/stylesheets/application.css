@@ -71,7 +71,10 @@
        background-position:center center;
        margin: 0;
     }
-    #white{
+    #white {
+      color: white;
+    }
+    .white label{
       color: white;
     }
 

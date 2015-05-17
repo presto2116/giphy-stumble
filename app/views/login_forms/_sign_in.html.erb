@@ -1,14 +1,14 @@
 <div>
 	<h2>Sign In</h2>
 	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-		<%= f.label :email %>
+		<div class="white"><%= f.label :email %>
 		<%= f.email_field :email, :autofocus => true %>
 		<%= f.label :password %>
 		<%= f.password_field :password %>
 	<% if devise_mapping.rememberable? -%>
 		<%= f.check_box :remember_me %> <%= f.label :remember_me %>
 	<% end -%>
-	<br>
+	<br></div>
 	<%= f.submit "Sign in", :class => 'button' %>
 	<% end %>
 		<a href='#'  data-reveal-id="sign-up-modal">Sign up</a>
