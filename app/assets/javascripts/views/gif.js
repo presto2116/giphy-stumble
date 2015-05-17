@@ -2,8 +2,8 @@ function GifView() {
 	$('#giphy-stumble').on('click', this.gifStumble.bind(this));
 	$('#interest-stumble').on('click', this.interestStumble.bind(this));
 	$('#add-favorite').on('click', this.addToFavorites.bind(this));
-	$('#gif-root').on('click', this.gifStumble.bind(this));
-	$('#gif-interest').on('click', this.interestStumble.bind(this));
+	$('#media-stumble').on('click', this.gifStumble.bind(this));
+	$('#media-interest-stumble').on('click', this.interestStumble.bind(this));
 }
 
 GifView.prototype = {
