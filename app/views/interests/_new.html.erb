@@ -1,6 +1,7 @@
 <%= form_for Interest.new do |f| %>
-
+<div class="white">
 <p><%= f.text_field :interest, :placeholder => "New Category", class:"left inline" %></p>
+<p>Use a dash(-) instead of a space for multple words</p></div>
 <%= f.submit "Stumble", :class => "button", :id => "interest-stumble" %>
 <% end %>
 
