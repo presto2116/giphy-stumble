@@ -185,7 +185,7 @@
     }
 
 /* response styling*/
-    @media only screen and (max-width: 930px) {
+    @media(max-width: 930px) {
       .favorites{
         max-width:650px;
         margin-left: auto;
@@ -194,12 +194,12 @@
 
     }
     
-    @media only screen and (max-width: 700px) {
+    @media (max-width: 700px) {
       .interests{
         margin: 0 30px;
       }
     }
-    @media only screen and (max-width: 638px) {
+    @media (max-width: 638px) {
       .media-stumble {
         display: block;
         height: 35px;
@@ -213,7 +213,7 @@
         
     }
 
-    @media only screen and (max-width: 620px) {
+    @media (max-width: 620px) {
       .favorites{
         max-width:325px;
         margin-left: auto;

@@ -1,7 +1,7 @@
 class GifsController < ApplicationController
 	
 	def random_interest
-			interest = ["best", "south park", "happy", "puppy", "dog", "simpsons", "space", "football", "apple", "geek", "monkey", "animal", "pizza", "cheese", "funny", "lol", "hilarious", "beer", "whiskey", "wasted", "alligator", "cute", "adorable", "sleeping", "loop", "viral", "tiger", "reaction", "favorites", "cat", "food", "sports", "tv", "movie", "batman", "wine", "banana", "dinosaur", "milkshake", "hotdog", "golden retriever", "beach", "snow", "rain", "mountain", "snowboard", "skateboard", "crazy", "car", "bike", "motorcycle", "giraffe", "fail", "colorado", "washington-dc", "shanghai", "cheeseburger", "sandwich", "pasta", "noodles", "china",  "internet",  "science", "astronomy", "art", "tornado", "lizard", "scary", "drunk", "drinking", "music", "band", "star wars", "star trek", "80s", "90s", "tired", "bored", "hungry", "stressed"]
+			interest = ["best", "happy", "puppy", "dog", "space", "football", "apple", "monkey", "animal", "pizza", "funny",  "cute", "sleeping", "tiger", "favorites", "cat", "food", "sports", "tv", "movie", "batman", "dinosaur",   "Golden-Retriever", "beach", "snow", "rain", "mountain", "snowboard", "skateboard", "car", "giraffe", "fail", "Washington-DC", "science", "astronomy", "art", "Star-Wars", "Star-Trek", "80s", "90s"]
 			@random_interest = interest.sample
 			return @random_interest
 	end
