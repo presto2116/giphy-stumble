@@ -207,7 +207,7 @@
       .media-stumble #media-stumble, #media-interest-stumble{
              width: 100%;
       }
-      #giphy-stumble{
+      #giphy-stumble, #interest-stumble{
         display: none;
       }
         
@@ -223,10 +223,10 @@
     }
 
 /*Modal styling*/
-    #sign-up-modal, #sign-in-modal, #new-category-modal, #remove-category-modal {
+    #sign-up-modal, #sign-in-modal, #new-category-modal, #remove-category-modal, #instructions-modal {
       background: rgba(51,51,51,.8); 
     }
-    #sign-up-modal, #new-category-modal, #remove-category-modal,  #sign-in-modal p, h2{
+    #sign-up-modal, #new-category-modal, #remove-category-modal, #sign-in-modal, #instructions-modal p, h2{
       color: white;
       display: inline-block;
     }

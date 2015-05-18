@@ -1,5 +1,5 @@
 <div>
-	<h2>Sign Up</h2>
+	<h2><span class="blue-logo">Sign Up</span></h2>
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<%= devise_error_messages! %>
 		<div class="white"><%= f.label :email %>
@@ -10,7 +10,9 @@
 		<%= f.password_field :password_confirmation %>
 		<p>Password must be 8 characters long</p></div>
 
-	<%= f.submit "Sign up", :class => 'button' %>
+	<%= f.submit "Sign up", :class => 'button'%> <a href="#" data-reveal-id="intructions-modal">Instructions</a> 
+	
 	<% end %>
+
 		<a href='#'  data-reveal-id="sign-in-modal">Sign in</a>
 </div>

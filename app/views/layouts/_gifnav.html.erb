@@ -40,6 +40,7 @@
               </a>
               <ul class="dropdown">
                 <li><span id="white"><%= current_user.email %></span></li>
+                <li><a href="#" data-reveal-id="instructions-modal">Instructions</a></li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, :method =>:delete %></li>
               </ul>
             </li>
@@ -52,6 +53,9 @@
               </li>
               <li>
                 <a href="#" data-reveal-id="sign-up-modal">New User</a>
+              </li>
+              <li>
+                <a href="#" data-reveal-id="instructions-modal">Instructions</a>
               </li>
             </ul>
           </li>
@@ -117,5 +121,19 @@
         <a class="close-reveal-modal">&#215;</a>
       </div>
     </div>
+    <div id="instructions-modal" class="reveal-modal" data-reveal>
+   
+        
+      <h2><span class="blue-logo">Intructions</span></h2>
+        <br>
+        <p>Title: Takes you back to the home page</p>
+        <p>Favorites: View all your favorited GIFs</p>
+        <p>Category: Tells you what category you are viewing</p>
+        <p>Category dropdown: Create new category, view lots of GIFs of specific category, and manage existing categories</p>
+        <p>Stumble: Takes you to a new random GIF</p>
+        <p>Heart: adds current GIF to your favorites</p>
+        <p>Hope you enjoy my app!</p>
+  
+        <a class="close-reveal-modal">&#215;</a>
 
-  </div>
+    </div>
