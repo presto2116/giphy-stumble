@@ -19,7 +19,7 @@ Gif.prototype = {
 			this.gif_url = response.data[randomNum(length)].images.original.url;
 			//BIG NO NO! global variable!
 				console.log(randomNum(length));
-			current_interest = response.current_interest;
+			Gif.prototype.current_interest = response.current_interest;
 			//BIG NO NO! global variable
 		}.bind(this)).fail(function(response){
 			console.log("ajax failed to load");
