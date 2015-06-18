@@ -24,7 +24,9 @@
       margin:0;
       background: #595959;
       height: 94%;
-
+    }
+    *{
+      font-family: 'Kalam' cursive !important;
     }
     .search{
       height: 100px;
