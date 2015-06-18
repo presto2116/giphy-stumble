@@ -16,11 +16,11 @@
 //= require turbolinks
 //= require_tree .
 
-var ready = function() {
+var giphyTime = function() {
 	$(document).foundation();
 	var gifView = new GifView();
 	gifView.interestStumble();
 }
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).ready(giphyTime);
+$(document).on('page:load', giphyTime);
