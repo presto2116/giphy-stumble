@@ -25,6 +25,9 @@
       background: #595959;
       height: 94%;
     }
+    body{
+      background: #595959;
+    }
     .search{
       height: 100px;
     }
@@ -62,7 +65,7 @@
 /*GIF styling*/
 
     #gif-root, #gif-interest {
-      background-color: black;
+      background-color: #595959;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -116,6 +119,10 @@
     .fi-widget{
       font-size: 20px;
     }
+    .favorites-widget{
+      font-size: 14px;
+    }
+
 
 /*favorites page styling*/
 
