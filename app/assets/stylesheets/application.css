@@ -25,12 +25,6 @@
       background: #595959;
       height: 94%;
     }
-    *{
-      font-family: 'Kalam' !important;
-    }
-    meta.foundation-data-attribute-namespace {
-      font-family: false; 
-    }
     .search{
       height: 100px;
     }
@@ -43,6 +37,8 @@
     }
     .blue-logo {
       color: #007095 !important;
+      font-family: 'Bangers';
+      font-size: 32px;
     }
 
  /*Footer Styling*/

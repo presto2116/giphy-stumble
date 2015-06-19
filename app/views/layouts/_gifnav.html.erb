@@ -23,7 +23,7 @@
             <a class="button radius" id="giphy-stumble">Stumble</a>
           </li>
           <li id="space"></li>
-          <% if current_user %>
+          <% if user_signed_in? %>
             <li>
               <a class="button radius" id="add-favorite"> <i class="fi-heart"></i></a>
             </li>
@@ -33,7 +33,7 @@
             </li>
           <% end %>
 
-          <% if current_user %>
+          <% if user_signed_in? %>
             <li class="has-dropdown">
               <a href="#">
                 <i class="fi-widget"></i>
@@ -65,7 +65,7 @@
         <!-- Left Nav Section -->
         <ul class="left">
         <li class="divider"></li>
-          <% if current_user %>
+          <% if user_signed_in? %>
             <li>
               <a href="/favorites">
                 Favorites (
