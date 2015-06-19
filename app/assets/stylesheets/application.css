@@ -26,7 +26,10 @@
       height: 94%;
     }
     *{
-      font-family: 'Kalam' cursive !important;
+      font-family: 'Kalam' !important;
+    }
+    meta.foundation-data-attribute-namespace {
+      font-family: false; 
     }
     .search{
       height: 100px;
