@@ -85,6 +85,9 @@
     .white label{
       color: white;
     }
+    .right-a-height{
+      height: 45px;
+    }
 
 /*Interests Index Styling*/
 
@@ -119,11 +122,9 @@
       background-color: green !important;
     }
     .fi-widget{
-      font-size: 20px;
+      font-size: 25px;
     }
-    .favorites-widget{
-      font-size: 14px;
-    }
+   
 
 
 /*favorites page styling*/
