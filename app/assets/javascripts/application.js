@@ -22,5 +22,7 @@ var ready = function() {
 	gifView.interestStumble();
 }
 
+
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
